@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
-import app from './index'
+import indexApp from './index'
+import { Hono } from 'hono'
 import Database from 'better-sqlite3'
 import path from 'path'
 import fs from 'fs'
@@ -114,6 +115,8 @@ const mockDB = {
   }
 };
 
+const app = new Hono();
+
 app.use('*', async (c, next) => {
   if (!c.env) {
     c.env = { DB: mockDB } as any;
@@ -122,6 +125,8 @@ app.use('*', async (c, next) => {
   }
   await next();
 });
+
+app.route('/', indexApp);
 
 const port = 8787;
 console.log(`[API] Server is running on port ${port}...`);
