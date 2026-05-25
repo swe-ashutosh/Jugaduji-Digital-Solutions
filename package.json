@@ -1,0 +1,17 @@
+{
+  "name": "jugaduji-digital-solutions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jugaduji Digital Solutions — Premium Digital Agency Monorepo",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "keywords": ["jugaduji", "digital-solutions", "web-development"],
+  "author": "Ashutosh Kushwaha",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.0"
+}
