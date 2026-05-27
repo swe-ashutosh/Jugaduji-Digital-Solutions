@@ -19,7 +19,7 @@ export default function Navbar() {
     <>
       {/* ─── Top Navbar ─── */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/72 backdrop-blur-xl border-b border-white/50 shadow-sm">
-        <div className="max-w-[1320px] mx-auto px-5 sm:px-8 h-15 flex items-center justify-between">
+        <div className="max-w-[1320px] mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
@@ -28,10 +28,11 @@ export default function Navbar() {
             <Image
               src="/brandwordmark.png"
               alt="Jugaduji Digital Solutions"
-              width={140}
-              height={35}
-              className="h-5 w-auto object-contain"
-              style={{ width: "auto", height: "auto" }}
+              width={200}
+              height={56}
+              className="object-contain"
+              style={{ width: "auto", height: "56px", maxHeight: "56px" }}
+              priority
             />
           </Link>
 

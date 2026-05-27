@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "build:pages": "opennextjs-cloudflare build",
-    "preview": "npm run build:pages && wrangler pages dev",
-    "deploy": "npm run build:pages && wrangler pages deploy .open-next/assets --project-name jugaduji-digital-solutions",
+    "preview": "npm run build:pages && wrangler dev",
+    "deploy": "npm run build:pages && wrangler deploy",
     "start": "next start",
     "lint": "eslint"
   },
