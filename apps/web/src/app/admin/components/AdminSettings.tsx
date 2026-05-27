@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Save, User, Lock, Eye, EyeOff, Upload } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function AdminSettings() {
   const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ export default function AdminSettings() {
   const fetchSettings = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8787/api/admin/settings");
+      const res = await fetch(`${API_BASE_URL}/api/admin/settings`);
       const data = await res.json();
       if (data) {
         setProfilePhoto(data.profile_photo || "");
@@ -52,7 +53,7 @@ export default function AdminSettings() {
     try {
       setSaving(true);
       setMessage(null);
-      const res = await fetch("http://localhost:8787/api/admin/settings", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/settings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

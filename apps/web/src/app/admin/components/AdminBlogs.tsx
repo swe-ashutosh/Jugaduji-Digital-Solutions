@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Plus, Trash2, X, Bold, Italic, Link2, Image as ImageIcon, Heading1, Heading2, AlignLeft, AlignCenter, Trash, FileText, Upload } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState<any[]>([]);
@@ -19,7 +20,7 @@ export default function AdminBlogs() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8787/api/blogs");
+      const res = await fetch(`${API_BASE_URL}/api/blogs`);
       const data = await res.json();
       setBlogs(data || []);
     } catch (e) {
@@ -87,7 +88,7 @@ export default function AdminBlogs() {
     }
 
     try {
-      const res = await fetch("http://localhost:8787/api/admin/blogs", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/blogs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -120,7 +121,7 @@ export default function AdminBlogs() {
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this blog post?")) return;
     try {
-      await fetch(`http://localhost:8787/api/admin/blogs/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE_URL}/api/admin/blogs/${id}`, { method: "DELETE" });
       fetchBlogs();
     } catch (e) {
       console.error(e);

@@ -112,8 +112,14 @@ Thumbs.db
 
 #node_modules
 .env
+.env.local
+.env.*.local
 .next
 #dist
 #build
 .cache
 .DS_Store
+
+# Cloudflare Pages / OpenNext build output
+.open-next
+.wrangler

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Plus, Minus, ArrowRight, HelpCircle } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -12,7 +13,7 @@ export default function FAQPage() {
   useEffect(() => {
     const fetchFaqs = async () => {
       try {
-        const res = await fetch("http://localhost:8787/api/faqs");
+        const res = await fetch(`${API_BASE_URL}/api/faqs`);
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
         setFaqs(data || []);

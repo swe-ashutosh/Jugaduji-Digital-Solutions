@@ -3,5 +3,9 @@
   "name": "jugaduji-digital-solutions",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": ".open-next"
+  // Cloudflare Pages: point to the OpenNext build output
+  "pages_build_output_dir": ".open-next/assets",
+  "assets": {
+    "binding": "ASSETS"
+  }
 }

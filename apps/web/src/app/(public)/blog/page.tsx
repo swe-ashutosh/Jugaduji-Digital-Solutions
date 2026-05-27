@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Search, Calendar, Clock, User, ArrowRight, FileText } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -16,7 +17,7 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch("http://localhost:8787/api/blogs");
+        const res = await fetch(`${API_BASE_URL}/api/blogs`);
         const data = await res.json();
         setPosts(Array.isArray(data) ? data : []);
       } catch (e) {

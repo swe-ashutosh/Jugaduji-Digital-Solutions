@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Trash2, X, Monitor, Smartphone, Palette, Cloud, Zap, Activity } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export const AVAILABLE_ICONS = [
   { name: "Monitor", component: Monitor },
@@ -30,7 +31,7 @@ export default function AdminServices() {
   const fetchServices = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8787/api/admin/services");
+      const res = await fetch(`${API_BASE_URL}/api/admin/services`);
       const data = await res.json();
       setServices(data || []);
     } catch (e) {
@@ -48,7 +49,7 @@ export default function AdminServices() {
     e.preventDefault();
     if (!title || !description) return;
     try {
-      await fetch("http://localhost:8787/api/admin/services", {
+      await fetch(`${API_BASE_URL}/api/admin/services`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, description, icon_name: iconName, color_theme: colorTheme, order_index: services.length + 1 }),
@@ -67,7 +68,7 @@ export default function AdminServices() {
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this Service?")) return;
     try {
-      await fetch(`http://localhost:8787/api/admin/services/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE_URL}/api/admin/services/${id}`, { method: "DELETE" });
       fetchServices();
     } catch (e) {
       console.error("Failed to delete", e);

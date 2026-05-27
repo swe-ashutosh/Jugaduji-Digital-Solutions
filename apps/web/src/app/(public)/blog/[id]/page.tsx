@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function BlogDetailPage() {
   const params = useParams();
@@ -17,7 +18,7 @@ export default function BlogDetailPage() {
     if (!id) return;
     const fetchPost = async () => {
       try {
-        const res = await fetch(`http://localhost:8787/api/blogs/${id}`);
+        const res = await fetch(`${API_BASE_URL}/api/blogs/${id}`);
         if (!res.ok) {
           router.push("/blog");
           return;

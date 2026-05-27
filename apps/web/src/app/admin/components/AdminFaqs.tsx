@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Trash2, X } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function AdminFaqs() {
   const [faqs, setFaqs] = useState<{ id: number; question: string; answer: string }[]>([]);
@@ -12,7 +13,7 @@ export default function AdminFaqs() {
     try {
       setLoading(true);
       // For local development, hitting the Wrangler port
-      const res = await fetch("http://localhost:8787/api/admin/faqs");
+      const res = await fetch(`${API_BASE_URL}/api/admin/faqs`);
       const data = await res.json();
       setFaqs(data || []);
     } catch (e) {
@@ -30,7 +31,7 @@ export default function AdminFaqs() {
     e.preventDefault();
     if (!newQuestion || !newAnswer) return;
     try {
-      await fetch("http://localhost:8787/api/admin/faqs", {
+      await fetch(`${API_BASE_URL}/api/admin/faqs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: newQuestion, answer: newAnswer, order_index: faqs.length + 1 }),
@@ -47,7 +48,7 @@ export default function AdminFaqs() {
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this FAQ?")) return;
     try {
-      await fetch(`http://localhost:8787/api/admin/faqs/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE_URL}/api/admin/faqs/${id}`, { method: "DELETE" });
       fetchFaqs();
     } catch (e) {
       console.error("Failed to delete", e);

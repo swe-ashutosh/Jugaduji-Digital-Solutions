@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { Header, Navbar, Footer, WhatsAppButton, CallButton } from "@jugaduji/ui";
+import { Navbar, Footer, WhatsAppButton, CallButton } from "@jugaduji/ui";
 
 const inter = Inter({
   variable: "--font-inter",
