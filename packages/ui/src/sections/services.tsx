@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { Comfortaa } from 'next/font/google';
 import Image from "next/image";
@@ -39,39 +37,22 @@ const brandFont = Comfortaa({
 
 // Trusted company logos (Add path to 'logo' when you have their image, e.g., logo: "/krrish.png")
 const trustedCompanies = [
-  { name: "Krrish Computer", logo: "/krrish.png", href: "#" },
-  { name: "Sonbhadra Technologies", logo: "", href: "#" },
-  { name: "Shaury Jan Sewa Kendra", logo: "", href: "#" },
+  { name: "Krrish Computer & Technology", logo: "/krrish.png", href: "#" },
+  { name: "Sonbhadra Technician Experts", logo: "", href: "#" },
+  { name: "Samrat Construction", logo: "", href: "#" },
   { name: "Apna Room", logo: "", href: "#" },
-  { name: "Apna Library", logo: "/apnalibrarylogo.png", href: "https:apnalibrary.jugaduji.com" },
+  { name: "Apna Library", logo: "/apnalibrarylogo.png", href: "https://apnalibrary.jugaduji.com" },
+];
+
+// Services data — statically defined for SSR (crawlers see real content, not loading states)
+const services = [
+  { id: 1, title: "Web Development", description: "Custom websites and web applications built with Next.js, React, and modern technologies. Fast, responsive, and SEO-optimized.", icon_name: "Monitor", color_theme: "blue" },
+  { id: 2, title: "Mobile Apps", description: "Native and cross-platform mobile applications for iOS and Android using React Native.", icon_name: "Smartphone", color_theme: "teal" },
+  { id: 3, title: "UI/UX Design", description: "Beautiful, intuitive, and user-centered design for digital products. Figma prototyping and design systems.", icon_name: "Palette", color_theme: "orange" },
+  { id: 4, title: "Cloud Solutions", description: "Scalable and secure cloud infrastructure with Cloudflare Edge deployment and serverless APIs.", icon_name: "Cloud", color_theme: "purple" },
 ];
 
 export default function ServicesAndAbout() {
-  const [services, setServices] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const res = await fetch("http://localhost:8787/api/services");
-        if (!res.ok) throw new Error("Network response was not ok");
-        const data = await res.json();
-        setServices(data || []);
-      } catch (e) {
-        console.warn("API not available, using fallback services data.");
-        // Fallback data so the UI still looks good
-        setServices([
-          { id: 1, title: "Web Development", description: "Custom websites and web applications built with modern technologies.", icon_name: "Monitor", color_theme: "blue" },
-          { id: 2, title: "Mobile Apps", description: "Native and cross-platform mobile applications for iOS and Android.", icon_name: "Smartphone", color_theme: "teal" },
-          { id: 3, title: "UI/UX Design", description: "Beautiful, intuitive, and user-centered design for digital products.", icon_name: "Palette", color_theme: "orange" },
-          { id: 4, title: "Cloud Solutions", description: "Scalable and secure cloud infrastructure and deployment services.", icon_name: "Cloud", color_theme: "purple" }
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchServices();
-  }, []);
 
   return (
     <>
@@ -96,9 +77,8 @@ export default function ServicesAndAbout() {
 
             {/* Primary Services Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {loading && <div className="col-span-1 sm:col-span-2 text-center py-10 text-gray-400 font-medium animate-pulse">Loading Services...</div>}
-              
-              {!loading && services.map((svc) => {
+
+              {services.map((svc) => {
                 const theme = THEMES[svc.color_theme] || THEMES.blue;
                 const IconComponent = AVAILABLE_ICONS[svc.icon_name] || AVAILABLE_ICONS.HelpCircle;
 

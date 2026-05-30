@@ -1,0 +1,257 @@
+# Jugaduji Digital Solutions — Full Reference
+
+> Premium digital agency building high-performance websites, mobile apps, SEO strategies, and digital marketing solutions for modern businesses in India. Founded in 2026. MSME Registered.
+
+---
+
+## Company Overview
+
+**Jugaduji Digital Solutions** is a MSME-registered digital agency headquartered in Robertsganj, Sonbhadra, Uttar Pradesh, India. Founded by Ashutosh Kushwaha in 2026, the agency was born from a core belief: premium digital infrastructure should not be restricted exclusively to massive tech corporations — every business deserves a stunning, fast, and optimized digital presence.
+
+We serve startups, SMBs, and established enterprises across India, delivering end-to-end digital solutions spanning website development, mobile applications, SEO optimization, UI/UX design, branding, and digital marketing.
+
+**Key Statistics:**
+- 10+ happy clients served
+- 5+ projects delivered
+- 5+ years of combined team experience
+- 98% client satisfaction rate
+- MSME registered enterprise
+
+---
+
+## Detailed Service Offerings
+
+### 1. Web Development
+We build custom, high-performance websites using Next.js, React, and modern JavaScript frameworks. Every site is fully responsive, SEO-optimized, and deployed on edge infrastructure (Cloudflare) for sub-second load times.
+
+**What's included:**
+- Custom responsive design (mobile + desktop)
+- Next.js / React frontend development
+- Server-side rendering (SSR) for SEO
+- Admin dashboard / CMS integration
+- SSL certificate and DNS management
+- Performance optimization (Core Web Vitals)
+- WhatsApp and social media integration
+
+**Technologies:** Next.js 16, React 19, TypeScript, Tailwind CSS v4, Cloudflare Workers
+
+### 2. Mobile App Development
+Native and cross-platform mobile applications for iOS and Android. We build performant, user-friendly apps using React Native and modern mobile development practices.
+
+**What's included:**
+- Cross-platform development (iOS + Android)
+- Custom UI/UX design
+- Push notifications
+- API integration
+- App Store / Play Store deployment support
+
+**Technologies:** React Native, Expo, TypeScript
+
+### 3. SEO Optimization
+Comprehensive SEO services including technical SEO audits, on-page optimization, local SEO setup, content strategy, and ongoing monitoring. We help businesses rank higher on Google, Bing, and AI search engines (ChatGPT, Gemini, Perplexity).
+
+**What's included:**
+- Technical SEO audit and fixes
+- On-page SEO (meta tags, headings, content)
+- Local SEO and Google Business Profile setup
+- Schema/structured data implementation
+- Performance optimization
+- Monthly reporting
+
+### 4. UI/UX Design
+User-centered design services using Figma and modern design systems. We create interfaces that are beautiful, accessible, and conversion-optimized.
+
+**What's included:**
+- User research and persona development
+- Wireframing and prototyping (Figma)
+- Design system creation
+- Accessibility compliance
+- Responsive design for all devices
+
+### 5. Digital Marketing
+End-to-end digital marketing services including social media management, Google Ads, content marketing, and analytics-driven optimization.
+
+**What's included:**
+- Social media strategy and management
+- Google Ads campaign setup and optimization
+- Content creation and marketing
+- Analytics and performance tracking
+- Email marketing campaigns
+
+### 6. Branding
+Complete brand identity services from logo design to brand guidelines. We create cohesive visual identities that resonate with target audiences.
+
+**What's included:**
+- Logo design (multiple concepts)
+- Brand color palette and typography
+- Brand guidelines document
+- Business card and stationery design
+- Social media templates
+
+### 7. Cloud Solutions & Hosting
+Enterprise-grade cloud infrastructure using Cloudflare's edge network. We deploy and manage scalable, secure web applications with 99.9% uptime.
+
+**What's included:**
+- Cloudflare Edge deployment
+- Serverless API development (Hono.js + Workers)
+- Database setup (Turso/SQLite, PostgreSQL)
+- CDN and caching configuration
+- SSL/TLS management
+- DDoS protection
+
+---
+
+## Pricing Details
+
+### Basic Plan — ₹3,000/project
+Best for: Local businesses starting their digital journey.
+- Domain included
+- Landing page design
+- SEO optimization
+- SSL certificate
+- DNS management
+- Mobile & desktop responsive
+- WhatsApp integration
+
+### Growth Plan — ₹6,000/project (Most Popular)
+Best for: Growing businesses needing a robust online presence.
+- Domain included (.in extension)
+- 3 business email accounts
+- Custom website (up to 3 pages)
+- SEO optimization
+- Admin panel included
+- SSL certificate
+- DNS Management
+- Staff training session
+- 1-month free maintenance
+- Mobile & desktop responsive
+- WhatsApp integration
+- Free logo (non-editable)
+- Google Business Profile setup
+- Managed hosting (500 daily visitors)
+- One-time payment
+
+### Premium Plan — ₹15,000/project
+Best for: Businesses needing advanced features and custom design.
+- All Growth features included
+- AI Chatbot integration
+- Google Analytics setup
+- Fully customized UI design
+- Social media ad and post design
+- Priority support
+
+### Custom / Enterprise Plan — Contact for pricing
+Best for: Businesses with unique technical requirements.
+- Full-Stack Web & Mobile App development
+- Custom database architecture
+- Cloudflare Edge deployment
+- Dedicated server setup
+- 1-year premium support
+- Custom integrations
+- Dedicated project manager
+
+---
+
+## Our Process
+
+1. **Discovery Call** — We understand your business goals, target audience, and technical requirements through a detailed consultation.
+2. **Strategy & Planning** — We create a project roadmap, wireframes, and technical architecture document.
+3. **Design** — We design the UI/UX using Figma, presenting multiple concepts for your feedback.
+4. **Development** — Our engineers build the solution using modern technologies with regular progress updates.
+5. **Testing & QA** — Thorough testing across devices and browsers for performance, accessibility, and functionality.
+6. **Launch** — We deploy to production, configure DNS, SSL, and monitoring.
+7. **Ongoing Support** — Post-launch maintenance, updates, and optimization.
+
+---
+
+## Frequently Asked Questions
+
+**Q: What services does Jugaduji Digital Solutions offer?**
+A: We offer web development, mobile app development, UI/UX design, SEO optimization, digital marketing, branding, and cloud solutions.
+
+**Q: How long does a typical project take?**
+A: Timeline varies by scope. Simple landing pages: 3-5 days. Multi-page business websites: 1-2 weeks. Custom web applications: 4-8 weeks. Mobile apps: 6-12 weeks.
+
+**Q: Do you provide ongoing support after launch?**
+A: Yes. Our Growth plan includes 1-month free maintenance. We also offer ongoing support packages and our Custom/Enterprise plan includes 1-year premium support.
+
+**Q: What technologies do you use?**
+A: Our primary stack is Next.js 16, React 19, TypeScript, Tailwind CSS v4 for frontend. For backend we use Cloudflare Workers, Hono.js, Drizzle ORM, and Turso (SQLite). We manage our codebase as a pnpm monorepo.
+
+**Q: Do you work with clients outside of Robertsganj?**
+A: Absolutely. While we are based in Robertsganj, Uttar Pradesh, we serve clients across India and have worked with businesses in multiple states.
+
+**Q: What makes Jugaduji different from other agencies?**
+A: We combine enterprise-grade technology (Next.js, Cloudflare Edge) with affordable pricing. Most agencies either charge premium prices for modern tech, or offer cheap solutions with outdated technology. We bridge that gap. Plus, we are MSME registered, giving you the trust and reliability of a government-recognized business.
+
+**Q: Can you help improve my existing website's SEO?**
+A: Yes. We offer standalone SEO audit and optimization services. We analyze your site's technical SEO, content, and competitive landscape, then implement fixes to improve your Google rankings and AI search visibility.
+
+**Q: Do you offer payment plans?**
+A: Our Basic and Growth plans are one-time payments. For Premium and Custom projects, we can discuss milestone-based payments based on project scope.
+
+---
+
+## Client Portfolio (Selected Projects)
+
+1. **Krrish Computer & Technology** — Business website with service catalog and contact integration.
+2. **Apna Library** — Digital library platform (apnalibrary.jugaduji.com) with resource management.
+3. **Sonbhadra Technician Experts** — Service provider website with booking system.
+4. **Samrat Construction** — Construction company portfolio with project showcase.
+5. **Apna Room** — Room rental/listing platform.
+
+---
+
+## Industries We Serve
+
+- E-Commerce: High-converting storefronts and shopping carts
+- Healthcare: Secure clinic and hospital portals
+- Real Estate: Property listings and agent platforms
+- Education: LMS and student management systems
+- B2B Services: Corporate portfolios and lead generation
+- Logistics: Tracking portals and fleet management websites
+
+---
+
+## Founder — Ashutosh Kushwaha
+
+**Title:** Founder & Lead Architect
+**Education:** Specialized training at JSPIDER Training Center, Rajajinagar, Bangalore
+**Experience:** 5+ years in software development and digital architecture
+
+**Technical Expertise:**
+- Full-Stack Development (Next.js, React, Node.js, TypeScript)
+- System Architecture and Monorepo Design
+- Cloud Infrastructure (Cloudflare Workers, Edge Computing)
+- Database Design (SQL, Drizzle ORM, Turso)
+- SEO & Performance Optimization
+- UI/UX Design Systems
+- DevOps & CI/CD Pipelines
+
+**Professional Journey:**
+- 2020: Began intensive software development studies
+- 2023: Completed specialized training at JSPIDER, Bangalore
+- 2026: Founded Jugaduji Digital Solutions
+
+**Social Profiles:**
+- LinkedIn: https://www.linkedin.com/in/ashutosh-jugaduji/
+- Twitter/X: https://x.com/swe_ashutosh
+
+---
+
+## Contact Information
+
+- **Website:** https://jugaduji.com
+- **Email:** info@jugaduji.com
+- **Phone:** +91-9519498159
+- **WhatsApp:** +91-9519498159
+- **Address:** Front Of Hotel The Grand, Civil Line Road, Robertsganj, Uttar Pradesh 231216, India
+- **Business Hours:** Monday–Saturday, 10:00 AM – 6:00 PM IST
+- **MSME Registration:** Registered
+
+## Social Media
+
+- **LinkedIn:** https://www.linkedin.com/company/jugaduji
+- **Twitter/X:** https://x.com/jugaduji
+- **Instagram:** https://www.instagram.com/jugadujiofficial
+- **Facebook:** https://www.facebook.com/jugadujiofficial

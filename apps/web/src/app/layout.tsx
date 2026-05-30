@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { Navbar, Footer, WhatsAppButton, CallButton } from "@jugaduji/ui";
+import { generateRootSchemaGraph } from "@/lib/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,22 +29,27 @@ export const metadata: Metadata = {
     template: "%s | Jugaduji — Digital Solutions",
   },
   description:
-    "Jugaduji Digital Solutions builds high-performance websites, mobile apps, SEO strategies, and digital marketing solutions for modern businesses. Premium digital agency trusted by 100+ clients.",
+    "Jugaduji Digital Solutions builds high-performance websites, mobile apps, SEO strategies, and digital marketing solutions for modern businesses in India. Premium digital agency based in Robertsganj, UP.",
   keywords: [
     "Jugaduji",
+    "Jugaduji Digital Solutions",
     "digital solutions",
     "website development",
+    "website development India",
     "mobile apps",
     "SEO optimization",
     "digital marketing",
     "UI/UX design",
     "branding",
-    "web development India",
-    "premium digital agency",
+    "web development Robertsganj",
+    "web development Uttar Pradesh",
+    "premium digital agency India",
+    "Next.js development",
+    "affordable website India",
   ],
-  authors: [{ name: "Ashutosh Kushwaha", url: "https://jugaduji.com" }],
+  authors: [{ name: "Ashutosh Kushwaha", url: "https://jugaduji.com/founder" }],
   creator: "Jugaduji Digital Solutions",
-  publisher: "Jugaduji",
+  publisher: "Jugaduji Digital Solutions",
   metadataBase: new URL("https://jugaduji.com"),
   alternates: {
     canonical: "https://jugaduji.com",
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
     title:
       "Jugaduji — We Build Digital Experiences That Grow Your Business",
     description:
-      "Premium digital agency offering web development, mobile apps, UI/UX design, and digital marketing. Trusted by 100+ businesses.",
+      "Premium digital agency offering web development, mobile apps, UI/UX design, and digital marketing. Based in India, serving businesses nationwide.",
     siteName: "Jugaduji Digital Solutions",
     type: "website",
     locale: "en_IN",
@@ -71,8 +76,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jugaduji — Digital Solutions for Modern Business",
     description:
-      "We build websites, mobile apps, and digital strategies that grow your business.",
+      "We build websites, mobile apps, and digital strategies that grow your business. Based in India.",
     images: ["/Hero.png"],
+    creator: "@jugaduji",
+    site: "@jugaduji",
   },
   robots: {
     index: true,
@@ -86,52 +93,55 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.png",
+    icon: "/favicon-cropped.png",
+  },
+  other: {
+    "google-site-verification": "", // Add your GSC token here
   },
 };
 
-// JSON-LD structured data for SEO
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Jugaduji Digital Solutions",
-  description:
-    "Premium digital agency offering website development, mobile apps, UI/UX design, SEO, and digital marketing.",
-  url: "https://jugaduji.com",
-  logo: "https://jugaduji.com/jugadujibrandlogo.png",
-  image: "https://jugaduji.com/Hero.png",
-  telephone: "+91-98765-43210",
-  email: "hello@jugaduji.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "India",
-    addressCountry: "IN",
-  },
-  priceRange: "₹3,000 - ₹50,000",
-  founder: {
-    "@type": "Person",
-    name: "Ashutosh Kushwaha",
-    jobTitle: "Founder & Lead Architect",
-  },
-};
+import ClarityTracker from "../components/ClarityTracker";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemaGraph = generateRootSchemaGraph();
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${poppins.variable} h-full`}
     >
       <head>
+        {/* JSON-LD Structured Data: WebSite + Organization + LocalBusiness + Person */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }}
+        />
+        {/* Google Analytics Tag */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L7M83Q3B7"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-5L7M83Q3B7');
+            `,
+          }}
         />
       </head>
       <body className="min-h-full font-sans antialiased">
+        {/* Skip to main content for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-[var(--color-primary)] focus:font-bold focus:text-sm"
+        >
+          Skip to main content
+        </a>
+        <ClarityTracker />
         {children}
       </body>
     </html>

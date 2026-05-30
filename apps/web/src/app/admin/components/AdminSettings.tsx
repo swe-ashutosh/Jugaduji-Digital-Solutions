@@ -6,6 +6,7 @@ export default function AdminSettings() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [adminEmail, setAdminEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -22,6 +23,7 @@ export default function AdminSettings() {
       const data = await res.json();
       if (data) {
         setProfilePhoto(data.profile_photo || "");
+        setAdminEmail(data.admin_email || "admin@jugaduji.com");
         setPassword(data.admin_password || "");
         setConfirmPassword(data.admin_password || "");
       }
@@ -57,6 +59,7 @@ export default function AdminSettings() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          admin_email: adminEmail,
           admin_password: password,
           profile_photo: profilePhoto,
         }),
@@ -142,6 +145,17 @@ export default function AdminSettings() {
             <Lock size={20} className="text-[var(--color-primary)]" />
             Security Settings
           </h3>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-[var(--color-navy)] mb-1.5">Admin Email</label>
+            <input
+              type="email"
+              value={adminEmail}
+              onChange={(e) => setAdminEmail(e.target.value)}
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-[var(--color-primary)] transition-all"
+              placeholder="admin@jugaduji.com"
+              required
+            />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-[var(--color-navy)] mb-1.5">New Admin Password</label>

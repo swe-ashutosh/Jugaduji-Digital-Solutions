@@ -4,21 +4,21 @@ import { Star, Quote } from "lucide-react";
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Rahul Verma",
-      company: "TechNova India",
-      text: "Jugaduji completely transformed our online presence. The Next.js architecture they deployed decreased our page load times by 70%. Incredible technical expertise.",
+      name: "Shailesh Maury",
+      company: "Krrish Computer & Technology",
+      text: "Jugaduji Digital Solutions helped us create a smooth and professional digital system for our CSC center. From Aadhaar-related work support to online services and HDFC Bank BC operations, everything became faster and easier to manage. The platform is simple, reliable, and very useful for daily customer work.",
       rating: 5,
     },
     {
-      name: "Sneha Kapoor",
-      company: "Elegant Interiors",
-      text: "From UI/UX design to final execution, the team was brilliant. Our new portfolio site not only looks stunning but also generates 3x more local leads.",
+      name: "Birbal Singh",
+      company: "Sonbhadra Technician Experts",
+      text: "We needed a modern and trusted online presence for our CCTV business, and Jugaduji Digital Solutions delivered exactly that. Our services, CCTV installation work, and product showcase now look professional and help customers understand our work clearly. Great support and clean execution.",
       rating: 5,
     },
     {
-      name: "Amit Desai",
-      company: "Desai & Co Logistics",
-      text: "Their SEO strategies gave our business the exact boost it needed. We now rank #1 on Google Maps in our city for all our primary services.",
+      name: "Satyendra Maurya",
+      company: "Samrat Construction",
+      text: "Jugaduji Digital Solutions provided an excellent digital setup for our construction and electrical services business. Our solar system and electricity-related services are now presented professionally online, helping customers connect with us more easily. Highly recommended for business growth.",
       rating: 5,
     },
   ];

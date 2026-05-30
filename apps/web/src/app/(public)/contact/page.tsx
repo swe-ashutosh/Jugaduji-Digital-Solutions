@@ -14,12 +14,53 @@ import {
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const target = e.target as typeof e.target & {
+      name: { value: string };
+      email: { value: string };
+      subject: { value: string };
+      message: { value: string };
+    };
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/info@jugaduji.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: target.name.value,
+          email: target.email.value,
+          _subject: `New Contact Inquiry: ${target.subject.value || 'General'}`,
+          service: target.subject.value,
+          message: target.message.value,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setFormSubmitted(true);
+      target.name.value = '';
+      target.email.value = '';
+      target.subject.value = '';
+      target.message.value = '';
+      setTimeout(() => setFormSubmitted(false), 5000);
+    } catch (err) {
+      setErrorMessage("Sorry, there was an error sending your message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -199,11 +240,18 @@ export default function ContactPage() {
                     ></textarea>
                   </div>
 
+                  {errorMessage && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="btn-primary w-full justify-center py-3.5 shadow-md hover:shadow-lg rounded-xl text-sm"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full justify-center py-3.5 shadow-md hover:shadow-lg rounded-xl text-sm disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message <Send size={15} />
+                    {isSubmitting ? "Sending..." : "Send Message"} <Send size={15} />
                   </button>
                 </form>
               )}

@@ -14,14 +14,84 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const fallbackPosts = [
+    {
+      id: "why-digital-marketing-2026",
+      title: "Why Your Business Needs Digital Marketing in 2026",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      category: "Marketing",
+      excerpt: "Discover why transitioning to a digital-first marketing strategy is essential for modern businesses.",
+      read_time: "6 min read",
+      author: "Jugaduji Team",
+      created_at: "2026-05-01T10:00:00Z",
+    },
+    {
+      id: "role-of-seo",
+      title: "The Critical Role of SEO in Modern Business Growth",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=2074&auto=format&fit=crop",
+      category: "SEO",
+      excerpt: "Learn how Search Engine Optimization drives organic traffic and builds long-term brand authority.",
+      read_time: "5 min read",
+      author: "Alex Chen",
+      created_at: "2026-04-20T10:00:00Z",
+    },
+    {
+      id: "business-online",
+      title: "Why Now is the Perfect Time to Move Your Business Online",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072&auto=format&fit=crop",
+      category: "Technology",
+      excerpt: "Consumer habits have changed. Here is why taking your operations online is your safest bet for growth.",
+      read_time: "4 min read",
+      author: "Sarah Jenkins",
+      created_at: "2026-04-10T10:00:00Z",
+    },
+    {
+      id: "ui-ux-impact",
+      title: "How UI/UX Design Impacts Your Bottom Line",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop",
+      category: "Design",
+      excerpt: "Good design is good business. Explore how user experience directly correlates with your sales.",
+      read_time: "7 min read",
+      author: "Design Team",
+      created_at: "2026-03-28T10:00:00Z",
+    },
+    {
+      id: "content-marketing-basics",
+      title: "Understanding the Basics of Content Marketing",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=2000&auto=format&fit=crop",
+      category: "Marketing",
+      excerpt: "Stop pitching and start teaching. How content marketing creates loyal brand advocates.",
+      read_time: "5 min read",
+      author: "Jugaduji Team",
+      created_at: "2026-03-15T10:00:00Z",
+    },
+    {
+      id: "social-media-strategy",
+      title: "Social Media Strategy: Building Your Brand Online",
+      content: "",
+      image_url: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop",
+      category: "Marketing",
+      excerpt: "Navigate the complex world of social media to build a thriving, engaged online community.",
+      read_time: "6 min read",
+      author: "Marketing Dept",
+      created_at: "2026-03-01T10:00:00Z",
+    },
+  ];
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const res = await fetch(`${API_BASE_URL}/api/blogs`);
         const data = await res.json();
-        setPosts(Array.isArray(data) ? data : []);
+        setPosts(Array.isArray(data) && data.length > 0 ? data : fallbackPosts);
       } catch (e) {
-        console.error(e);
+        console.warn("Blog API not available, using fallback posts.");
+        setPosts(fallbackPosts);
       } finally {
         setLoading(false);
       }

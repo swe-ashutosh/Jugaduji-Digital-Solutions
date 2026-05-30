@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import {
@@ -128,17 +126,17 @@ export default function AboutPage() {
               />
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg flex items-center justify-around">
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-[var(--color-navy)]">5+</h3>
+                  <p className="text-2xl font-bold text-[var(--color-navy)]">5+</p>
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Years Experience</p>
                 </div>
                 <div className="w-px h-10 bg-gray-200" />
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-[var(--color-navy)]">10+</h3>
+                  <p className="text-2xl font-bold text-[var(--color-navy)]">10+</p>
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Key Clients</p>
                 </div>
                 <div className="w-px h-10 bg-gray-200" />
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-[var(--color-navy)]">98%</h3>
+                  <p className="text-2xl font-bold text-[var(--color-navy)]">98%</p>
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Satisfaction</p>
                 </div>
               </div>

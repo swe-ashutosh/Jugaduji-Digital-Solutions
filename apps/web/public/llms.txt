@@ -1,0 +1,62 @@
+# Jugaduji Digital Solutions
+
+> Premium digital agency building high-performance websites, mobile apps, SEO strategies, and digital marketing solutions for modern businesses in India.
+
+## About
+
+Jugaduji Digital Solutions is a MSME-registered digital agency founded by Ashutosh Kushwaha in 2026. Based in Robertsganj, Uttar Pradesh, India, we serve businesses nationwide with affordable, premium-quality digital solutions.
+
+We specialize in Next.js web development, React Native mobile apps, SEO optimization, UI/UX design, branding, and digital marketing.
+
+## Services
+
+- **Web Development**: Custom websites built with Next.js, React, and modern frameworks. Starting at ₹3,000.
+- **Mobile App Development**: Native and cross-platform apps for iOS and Android using React Native.
+- **SEO Optimization**: Technical SEO, on-page optimization, local SEO, and content strategy.
+- **UI/UX Design**: User-centered design with Figma prototyping and design systems.
+- **Digital Marketing**: Social media marketing, Google Ads, content marketing, and analytics.
+- **Branding**: Logo design, brand identity, and visual design systems.
+- **Cloud Solutions**: Cloudflare Edge deployment, serverless APIs, and managed hosting.
+
+## Pricing
+
+| Plan | Price | Includes |
+|------|-------|----------|
+| Basic | ₹3,000/project | Domain, landing page, SEO, SSL, DNS management |
+| Growth | ₹6,000/project | Domain (.in), 3 business emails, 3-page website, admin panel, hosting, training |
+| Premium | ₹15,000/project | Everything in Growth + AI chatbot, Google Analytics, custom UI, ad design |
+| Custom | Contact us | Full-stack web & mobile app, custom database, Cloudflare Edge, 1-year support |
+
+## Contact
+
+- Website: https://jugaduji.com
+- Email: info@jugaduji.com
+- Phone: +91-9519498159
+- Address: Front Of Hotel The Grand, Civil Line Road, Robertsganj, Uttar Pradesh, India
+- Hours: Mon-Sat 10AM-6PM
+
+## Social
+
+- LinkedIn: https://www.linkedin.com/company/jugaduji
+- Twitter/X: https://x.com/jugaduji
+- Instagram: https://www.instagram.com/jugadujiofficial
+- Facebook: https://www.facebook.com/jugadujiofficial
+
+## Key Pages
+
+- Home: https://jugaduji.com
+- About Us: https://jugaduji.com/about
+- Services: https://jugaduji.com/services
+- Projects: https://jugaduji.com/projects
+- Blog: https://jugaduji.com/blog
+- FAQs: https://jugaduji.com/faqs
+- Contact: https://jugaduji.com/contact
+- Founder: https://jugaduji.com/founder
+
+## Founder
+
+Ashutosh Kushwaha — Founder & Lead Architect. Specializes in full-stack development, system architecture, Next.js, React, Node.js, TypeScript, Cloudflare Workers, and SEO optimization. Trained at JSPIDER Training Center, Rajajinagar, Bangalore.
+
+## Technology Stack
+
+Next.js 16, React 19, TypeScript, Tailwind CSS v4, Cloudflare Workers, Hono.js, Drizzle ORM, Turso (SQLite), pnpm monorepo, Lucide icons.

@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@jugaduji/ui": "workspace:*",
+    "@microsoft/clarity": "^1.0.2",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",

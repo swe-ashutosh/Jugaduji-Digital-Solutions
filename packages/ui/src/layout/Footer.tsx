@@ -20,9 +20,9 @@ const services = [
 ];
 
 const resources = [
-  { label: "Projects & Portals", href: "/projects" },
   { label: "FAQs", href: "/faqs" },
   { label: "Blog & Insights", href: "/blog" },
+  { label: "Projects & Portals", href: "/projects" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms & Conditions", href: "/terms" },
 ];
@@ -64,7 +64,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-navy)] text-white pt-5 pb-15 sm:pb-8 px-4 sm:px-8">
+    <footer className="bg-[var(--color-navy)] text-white pt-5 pb-18 sm:pb-8 px-4 sm:px-8">
       <div className="max-w-[1320px] mx-auto">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-6 gap-x-10 md:gap-10 lg:gap-8 mb-8">
@@ -76,9 +76,9 @@ export default function Footer() {
                   src="/jjugadu-removebg-preview.png"
                   alt="Jugaduji"
                   width={120}
-                  height={30}
-                  className="h-5 sm:h-6 w-auto object-contain brightness-0 invert"
-                  style={{ width: "auto", height: "auto" }}
+                  height={50}
+                  className="object-contain brightness-0 invert"
+                  style={{ width: "auto", height: "64px", maxHeight: "64px" }}
                 />
               </div>
             </Link>

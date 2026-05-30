@@ -1,34 +1,57 @@
-import React from "react";
-import { Check } from "lucide-react";
+"use client";
+
+import React, { useState } from "react";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 
 export default function Pricing() {
+  const [expandedPlans, setExpandedPlans] = useState<Record<number, boolean>>({});
+
+  const toggleExpand = (index: number) => {
+    setExpandedPlans((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   const plans = [
     {
-      name: "Beginner",
-      price: "₹4,999",
+      name: "Basic",
+      price: "₹3,000",
       desc: "Perfect for local businesses starting their digital journey.",
       features: [
-        "1-Page Landing Website",
-        "Responsive Mobile Design",
-        "Basic SEO Setup",
-        "Contact Form Integration",
-        "1 Month Free Maintenance",
+        "Domain included",
+        "Landing Pages",
+        "SEO included",
+        "SSL certificate",
+        "DNS Management",
+        "Mobile & PC friendly",
+        "WhatsApp integration",
       ],
       popular: false,
-      btnText: "Start Beginner",
+      btnText: "Start Basic",
       href: "/contact",
     },
     {
       name: "Growth",
-      price: "₹14,999",
-      desc: "Ideal for growing agencies and expanding stores.",
+      price: "₹6,000",
+      desc: "Our most popular package for robust business websites.",
       features: [
-        "Up to 5 Pages Website",
-        "Fast Next.js Architecture",
-        "Advanced SEO & Analytics",
-        "WhatsApp Live Chat",
-        "3 Months Free Maintenance",
+        "Domain included (.in)",
+        "3 Business Email Accounts",
+        "Custom Website (up to 3 pages)",
+        "SEO optimization included",
+        "Admin panel included",
+        "SSL certificate",
+        "DNS Management",
+        "Staff training session",
+        "1-month free maintenance",
+        "Mobile & desktop responsive",
+        "WhatsApp integration",
+        "Free logo (non-editable)",
+        "Google Business Profile setup",
+        "Managed hosting (500 daily visitors)",
+        "One-time payment",
       ],
       popular: true,
       btnText: "Get Growth Plan",
@@ -36,14 +59,14 @@ export default function Pricing() {
     },
     {
       name: "Premium",
-      price: "₹34,999",
-      desc: "For established businesses needing dynamic functionality.",
+      price: "₹15,000",
+      desc: "Advanced custom layouts and intelligent digital tools.",
       features: [
-        "Custom E-Commerce/CMS",
-        "Admin Dashboard Panel",
-        "Payment Gateway Integration",
-        "Premium Animations",
-        "6 Months Free Maintenance",
+        "Growth features included",
+        "AI Chatbot integration",
+        "Google Analytics",
+        "Customized UI",
+        "Ads and post design",
       ],
       popular: false,
       btnText: "Go Premium",
@@ -107,24 +130,53 @@ export default function Pricing() {
                 <p className={`text-sm mb-6 min-h-[40px] ${plan.highlight ? "text-gray-400" : "text-gray-500"}`}>
                   {plan.desc}
                 </p>
-                <div className="mb-8 flex items-end gap-1">
-                  <span className={`text-4xl font-extrabold tracking-tight ${plan.highlight ? "text-white" : "text-[var(--color-navy)]"}`}>
-                    {plan.price}
-                  </span>
-                  {plan.price !== "Let's Talk" && <span className={`text-sm font-medium mb-1 ${plan.highlight ? "text-gray-500" : "text-gray-400"}`}>/project</span>}
+                <div className="mb-8 flex flex-col justify-end min-h-[64px]">
+                  <div className="flex items-end gap-1">
+                    <span className={`text-3xl font-extrabold tracking-tight ${plan.highlight ? "text-white" : "text-[var(--color-navy)]"}`}>
+                      {plan.price}
+                    </span>
+                    {plan.price !== "Let's Talk" && (
+                      <span className={`text-sm font-medium mb-1 ${plan.highlight ? "text-gray-500" : "text-gray-400"}`}>
+                        /project
+                      </span>
+                    )}
+                  </div>
                 </div>
                 
                 <div className="space-y-4 mb-8">
-                  {plan.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className={`mt-0.5 rounded-full p-1 shrink-0 ${plan.highlight ? "bg-white/10 text-blue-300" : "bg-blue-50 text-[var(--color-primary)]"}`}>
-                        <Check size={12} strokeWidth={3} />
+                  {plan.features
+                    .slice(0, expandedPlans[i] ? plan.features.length : 5)
+                    .map((feat, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <div className={`mt-0.5 rounded-full p-1 shrink-0 ${plan.highlight ? "bg-white/10 text-blue-300" : "bg-blue-50 text-[var(--color-primary)]"}`}>
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                        <span className={`text-sm font-medium leading-snug ${plan.highlight ? "text-gray-300" : "text-gray-600"}`}>
+                          {feat}
+                        </span>
                       </div>
-                      <span className={`text-sm font-medium leading-snug ${plan.highlight ? "text-gray-300" : "text-gray-600"}`}>
-                        {feat}
-                      </span>
-                    </div>
-                  ))}
+                    ))}
+
+                  {plan.features.length > 5 && (
+                    <button
+                      onClick={() => toggleExpand(i)}
+                      className={`flex items-center gap-1.5 text-xs font-semibold mt-4 transition-colors ${
+                        plan.highlight
+                          ? "text-gray-300 hover:text-white"
+                          : "text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
+                      }`}
+                    >
+                      {expandedPlans[i] ? (
+                        <>
+                          Show Less <ChevronUp size={14} />
+                        </>
+                      ) : (
+                        <>
+                          Show All {plan.features.length} Features <ChevronDown size={14} />
+                        </>
+                      )}
+                    </button>
+                  )}
                 </div>
               </div>
               

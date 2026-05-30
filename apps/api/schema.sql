@@ -50,5 +50,6 @@ CREATE TABLE IF NOT EXISTS settings (
   value TEXT NOT NULL
 );
 
+INSERT OR IGNORE INTO settings (key, value) VALUES ('admin_email', 'admin@jugaduji.com');
 INSERT OR IGNORE INTO settings (key, value) VALUES ('admin_password', 'admin123');
 INSERT OR IGNORE INTO settings (key, value) VALUES ('profile_photo', '/founder-avatar.png');

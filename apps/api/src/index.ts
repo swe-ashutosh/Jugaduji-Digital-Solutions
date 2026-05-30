@@ -214,6 +214,69 @@ app.delete('/api/admin/blogs/:id', async (c) => {
   }
 })
 
+// --- AUTH API ---
+
+// 1. POST login (Admin)
+app.post('/api/admin/login', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { email, password } = body
+
+    if (!email || !password) {
+      return c.json({ error: 'Email and password are required' }, 400)
+    }
+
+    const { results } = await c.env.DB.prepare(
+      "SELECT * FROM settings WHERE key IN ('admin_email', 'admin_password')"
+    ).all()
+    
+    let storedEmail = 'admin@jugaduji.com'
+    let storedPassword = 'admin123'
+
+    results.forEach((row: any) => {
+      if (row.key === 'admin_email') storedEmail = row.value
+      if (row.key === 'admin_password') storedPassword = row.value
+    })
+
+    if (email === storedEmail && password === storedPassword) {
+      return c.json({ message: 'Login successful' })
+    }
+
+    return c.json({ error: 'Invalid credentials' }, 401)
+  } catch (e) {
+    return c.json({ error: 'Invalid request' }, 400)
+  }
+})
+
+// 2. POST forgot password (Admin)
+app.post('/api/admin/forgot-password', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { email } = body
+
+    if (!email) {
+      return c.json({ error: 'Email is required' }, 400)
+    }
+
+    const result = await c.env.DB.prepare(
+      "SELECT value FROM settings WHERE key = 'admin_email'"
+    ).first()
+    
+    const storedEmail = result ? result.value : 'admin@jugaduji.com'
+
+    if (email === storedEmail) {
+      // In a real app, send an email here.
+      // We simulate success.
+      return c.json({ message: 'If the email exists, a password reset link has been sent.' })
+    }
+
+    // Always return the same message to avoid email enumeration
+    return c.json({ message: 'If the email exists, a password reset link has been sent.' })
+  } catch (e) {
+    return c.json({ error: 'Invalid request' }, 400)
+  }
+})
+
 // --- SETTINGS API ---
 
 // 1. GET settings (Admin)
@@ -234,7 +297,13 @@ app.get('/api/admin/settings', async (c) => {
 app.post('/api/admin/settings', async (c) => {
   try {
     const body = await c.req.json()
-    const { admin_password, profile_photo } = body
+    const { admin_email, admin_password, profile_photo } = body
+
+    if (admin_email) {
+      await c.env.DB.prepare(
+        'INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)'
+      ).bind('admin_email', admin_email).run()
+    }
 
     if (admin_password) {
       await c.env.DB.prepare(
@@ -253,4 +322,58 @@ app.post('/api/admin/settings', async (c) => {
     return c.json({ error: 'Failed to update settings' }, 500)
   }
 })
+
+// --- CONTACT API ---
+app.post('/api/contact', async (c) => {
+  try {
+    const { name, email, subject, message } = await c.req.json()
+
+    if (!name || !email || !message) {
+      return c.json({ error: 'Name, email, and message are required' }, 400)
+    }
+
+    const emailPayload = {
+      personalizations: [
+        {
+          to: [{ email: 'info@jugaduji.com', name: 'Jugaduji Info' }],
+        },
+      ],
+      from: {
+        email: 'noreply@jugaduji.com',
+        name: 'Jugaduji Website Form',
+      },
+      reply_to: {
+        email: email,
+        name: name,
+      },
+      subject: `New Contact Inquiry: ${subject || 'General'}`,
+      content: [
+        {
+          type: 'text/plain',
+          value: `Name: ${name}\nEmail: ${email}\nService: ${subject}\n\nMessage:\n${message}`,
+        },
+      ],
+    }
+
+    const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(emailPayload),
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('MailChannels Error:', errorText)
+      return c.json({ error: `MailChannels Error: ${errorText}` }, 500)
+    }
+
+    return c.json({ message: 'Message sent successfully' })
+  } catch (e) {
+    console.error('Contact Form Error:', e)
+    return c.json({ error: 'Internal server error' }, 500)
+  }
+})
+
 export default app

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Lock, Mail } from "lucide-react";
+import { API_BASE_URL } from "@/lib/env";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -12,19 +13,29 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate login
-    setTimeout(() => {
-      setLoading(false);
-      // Hardcoded for demo purposes
-      if (email === "admin@jugaduji.com" && password === "admin123") {
+    
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      
+      const data = await res.json();
+      
+      if (res.ok) {
         router.push("/admin");
       } else {
-        alert("Invalid credentials. Try admin@jugaduji.com / admin123");
+        alert(data.error || "Invalid credentials.");
       }
-    }, 1000);
+    } catch (e) {
+      alert("Failed to connect to the server.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,6 +102,14 @@ export default function AdminLogin() {
                 className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all outline-none text-sm text-gray-700 bg-gray-50 focus:bg-white"
                 placeholder="••••••••"
               />
+            </div>
+            <div className="flex justify-end mt-2">
+              <Link
+                href="/admin/forgot-password"
+                className="text-xs text-[var(--color-primary)] hover:underline font-medium"
+              >
+                Forgot Password?
+              </Link>
             </div>
           </div>
 

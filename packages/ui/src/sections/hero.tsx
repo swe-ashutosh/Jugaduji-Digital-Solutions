@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -8,6 +10,7 @@ import {
   Rocket,
   Award,
   TrendingUp,
+  X,
 } from "lucide-react";
 
 const stats = [
@@ -42,8 +45,11 @@ const stats = [
 ];
 
 export default function Hero() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
-    <section
+    <>
+      <section
       className="relative w-full overflow-hidden pt-25 pb-6 sm:pb-10 lg:pb-14 mb-0 bg-[#f0f4fa]"
     >
       {/* ─── Desktop Background Image ─── */}
@@ -130,7 +136,10 @@ export default function Hero() {
               >
                 Get Started <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
               </Link>
-              <button className="flex items-center gap-2 sm:gap-3 text-[var(--color-navy)] font-bold hover:text-[var(--color-primary)] transition-colors group">
+              <button
+                onClick={() => setIsVideoOpen(true)}
+                className="flex items-center gap-2 sm:gap-3 text-[var(--color-navy)] font-bold hover:text-[var(--color-primary)] transition-colors group"
+              >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-200 flex items-center justify-center bg-white shadow-sm group-hover:border-[var(--color-primary)] group-hover:shadow-md transition-all">
                   <Play
                     size={14}
@@ -168,9 +177,9 @@ export default function Hero() {
                     <stat.icon className={stat.iconColor} size={18} />
                   </div>
                   <div>
-                    <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-[var(--color-navy)] leading-none">
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-[var(--color-navy)] leading-none">
                       {stat.value}
-                    </h4>
+                    </p>
                     <p className="text-[10px] sm:text-[11px] lg:text-xs text-gray-500 font-medium mt-0.5">
                       {stat.label}
                     </p>
@@ -185,5 +194,29 @@ export default function Hero() {
         </div>
       </div>
     </section>
+
+      {/* ─── Video Modal Overlay ─── */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity">
+          <div className="relative w-full max-w-5xl bg-black rounded-2xl overflow-hidden shadow-2xl animate-fade-up">
+            <button
+              onClick={() => setIsVideoOpen(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/40 rounded-full text-white transition-colors"
+              aria-label="Close video"
+            >
+              <X size={20} />
+            </button>
+            <video
+              src="/story.mp4"
+              controls
+              autoPlay
+              className="w-full h-auto max-h-[85vh] object-contain"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
